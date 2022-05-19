@@ -1,0 +1,63 @@
+<template>
+    <div class="wrapper">
+        <div class="account-search-panel">
+            <lightning-card icon-name="custom:custom12">
+                <div class="search">
+                    <lightning-input type="text"
+                                     class="input-text"
+                                     label="Enter account name to filter out"
+                                     onchange={applyFilter}>
+                    </lightning-input>
+                </div>
+                <div class="pagination-panel">
+                    <lightning-input type="number"
+                                     class="input-text"
+                                     label="display N records"
+                                     onchange={changePagination}
+                                     value="3">
+                    </lightning-input>
+                    <div class="page-numbers">
+                        <template for:each={paginationPages} for:item="pageNumber">
+                            <a class="page-numbers" value={pageNumber} key={pageNumber} onclick={changePage}>{pageNumber}</a>
+                        </template>
+                    </div>
+                </div>
+            </lightning-card>
+        </div>
+        <template if:true={filteredAccounts}>
+            <div class="accounts-list slds-grid slds-wrap">
+                <template for:each={filteredAccounts} for:item="account">
+                    <div class="account-card slds-size_1-of-5 slds-scrollable_y" style="height:400px;" key={account.Id}>
+                        <lightning-card title={account.Name} icon-name="custom:custom13" class="card-size">
+                            <div class="account-details">
+                                <p class="section-header">Account Details</p>
+                                <p>External Id: {account.uuId__c}</p>
+                                <p>Annual Revenue: {account.AnnualRevenue}</p>
+                                <p>Number of Employees: {account.NumberOfEmployees}</p>
+                                <p>Priority: {account.Priority__c}</p>
+                                <p>Owner: {account.Owner.Name}</p>
+                            </div>
+                            <div class="contact-information">
+                                <template if:true={account.Contacts}>
+                                    <p class="section-header">Contacts Details</p>
+                                    <template for:each={account.Contacts} for:item="contact">
+                                        <div class="contact" key={contact.Id}>
+                                            <p>Name: {contact.FirstName} {contact.LastName}</p>
+                                            <p>Title: {contact.Title}</p>
+                                            <p>Email: {contact.Email}</p>
+                                        </div>
+                                    </template>
+                                </template>
+                            </div>
+                        </lightning-card>
+                    </div>
+                </template>
+            </div>
+        </template>
+        <template if:false={accounts}>
+            <div class="error">
+                <p>{error}</p>
+            </div>
+        </template>
+    </div>
+</template>

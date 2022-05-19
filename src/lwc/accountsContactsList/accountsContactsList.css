@@ -1,0 +1,27 @@
+.account-details {
+    margin-left: 15px;
+}
+
+.contact-information, .search, .pagination-panel {
+    margin: 15px;
+}
+
+.account-card {
+    margin: 15px;
+}
+
+.section-header {
+    font-weight: 700;
+}
+
+.contact {
+    margin-bottom: 15px;
+}
+
+.contact:last-child {
+    margin-bottom: 0;
+}
+
+.page-numbers {
+    margin: 5px;
+}
