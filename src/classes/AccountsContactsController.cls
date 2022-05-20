@@ -8,7 +8,7 @@ public with sharing class AccountsContactsController {
                         uuid__c,
                         Owner.Name,
                         Priority__c,
-                (SELECT FirstName, LastName, Email, Owner.Name, Title FROM Contacts)
+                (SELECT FirstName, LastName, Email, Owner.Name, Title, AccountId FROM Contacts)
                 FROM Account
         ];
     }

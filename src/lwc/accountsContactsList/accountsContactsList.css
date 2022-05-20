@@ -1,3 +1,31 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    grid-template-rows: 0.2fr 1fr;
+    gap: 0px 15px;
+    grid-template-areas:
+    "account-information account-search-panel"
+    "account-information contacts-information";
+}
+
+.account-search-panel {
+    grid-area: account-search-panel;
+}
+
+.account-information {
+    grid-area: account-information;
+}
+
+.contacts-information {
+    grid-area: contacts-information;
+    display: flex;
+    flex-flow: wrap;
+    margin-top: 25px;
+    border: 1px solid #c9c9c9;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #c9c9c9;
+}
+
 .account-details {
     margin-left: 15px;
 }
@@ -8,6 +36,10 @@
 
 .account-card {
     margin: 15px;
+}
+
+.account-card:hover{
+    cursor: pointer;
 }
 
 .section-header {
@@ -24,4 +56,20 @@
 
 .page-numbers {
     margin: 5px;
+}
+
+.contact-detail {
+    border: 1px solid #c9c9c9;
+    border-radius: 5px;
+    height: 100px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.input-text-pagination {
+    width: 100px;
+}
+
+.input-text-account-name {
+    width: 300px;
 }
