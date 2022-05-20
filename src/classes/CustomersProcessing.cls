@@ -24,8 +24,6 @@ global with sharing class CustomersProcessing {
                 ownerId = agentHijId;
                 priority = 'High';
             }
-            System.debug('ownerId = ' + ownerId);
-            System.debug('agentLooId = ' + agentLooId);
             accountsToUpsert.add(new Account(
                     Name = accountRecord.company_name,
                     AnnualRevenue = annualRevenue,
@@ -47,8 +45,6 @@ global with sharing class CustomersProcessing {
             }
         }
 
-        System.debug('accountsToUpsert = ' + accountsToUpsert);
-
         if (!accountsToUpsert.isEmpty()) {
             try {
                 upsert accountsToUpsert uuid__c;
@@ -56,8 +52,6 @@ global with sharing class CustomersProcessing {
                 System.debug('Exception : ' + e);
             }
         }
-
-        System.debug('contactsToUpsert = ' + contactsToUpsert);
 
         if (!contactsToUpsert.isEmpty()) {
             try {

@@ -22,15 +22,12 @@ export default class AccountsContactsList extends LightningElement {
     loadAccountsContact() {
         getAllAccountsContacts()
             .then(result => {
-                console.log('result = ', result);
                 this.accounts = result;
                 const visibleContacts = [];
                 this.accounts.forEach(function(account) {
-                    console.log('account = ', account);
                     account.isVisible = true;
                     const contactsList = account.Contacts;
                     if (contactsList) {
-                        console.log('contacts = ', contactsList);
                         contactsList.forEach(function(contact) {
                             contact.isVisible = true;
                             // error here
@@ -100,7 +97,6 @@ export default class AccountsContactsList extends LightningElement {
     }
 
     displayContacts(event) {
-        console.log(event.currentTarget.id);
         this.contacts.forEach(function (contact) {
             if (contact.AccountId == event.currentTarget.id.substring(0, 18)) {
                 contact.isVisible = true;
